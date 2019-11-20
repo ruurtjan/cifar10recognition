@@ -40,6 +40,8 @@ python src/api.py
 
 Locally in Docker:
 ```shell script
-docker build . -t cifar10
-docker run -p 5000:5000 cifar10
+docker-compose build
+docker-compose up
 ```
+
+Remember to run `docker-compose build` whenever you change something.
