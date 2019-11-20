@@ -45,3 +45,9 @@ docker-compose up
 ```
 
 Remember to run `docker-compose build` whenever you change something.
+
+### Starting AirFlow
+
+```shell script
+docker-compose -f docker-compose-airflow.yml up
+```
