@@ -31,16 +31,9 @@ def load_data():
     dataset_dir = download_cifar10_data()
     n_samples = 10000
 
-    # train set
     train_X, train_y = create_train_data(dataset_dir, n_samples)
-
-    # validation set, batch 5
     val_X, val_y = retrieve_batch(dataset_dir, "data_batch_5")
-
-    # test set
     test_X, test_y = retrieve_batch(dataset_dir, "test_batch")
-
-    # labels
     label_to_names = retrieve_labels(dataset_dir)
 
     logger.info("training set size: data = {}, labels = {}".format(train_X.shape, train_y.shape))
@@ -58,7 +51,6 @@ def download_cifar10_data():
 
     :return dataset_dir: the filepath to the directory containing the cifar10 data
     """
-    # training set, batches 1-4
     dataset_dir = os.path.join(os.getcwd(), "data", "raw")
     if not os.path.exists(dataset_dir):
         os.makedirs(dataset_dir)

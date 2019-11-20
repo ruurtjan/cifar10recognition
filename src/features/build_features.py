@@ -19,12 +19,10 @@ def main():
     data_dict['train_X'], data_dict['val_X'], data_dict['test_X'], mean, std = normalize_all_data(data_dict['train_X'],
                                                                                                   data_dict['val_X'],
                                                                                                   data_dict['test_X'])
-    extra_info_dict = {}
-    extra_info_dict['mean'], extra_info_dict['std'], extra_info_dict['label_to_names'] = mean, std, \
-                                                                                         data_dict['label_to_names']
     with open(os.path.join(os.getcwd(), "data", "processed", "data_dictionary.pickle"), "wb") as pickle_file:
         pickle.dump(data_dict, pickle_file)
 
+    extra_info_dict = {'mean': mean, 'std': std, 'label_to_names': data_dict['label_to_names']}
     with open(os.path.join(os.getcwd(), "models", "extra_info_dictionary.pickle"), "wb") as pickle_file:
         pickle.dump(extra_info_dict, pickle_file)
 
