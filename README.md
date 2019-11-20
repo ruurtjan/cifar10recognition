@@ -28,9 +28,18 @@ pip install -r requirements.txt
 ```shell script
 python src/data/make_dataset.py
 python src/features/build_features.py
-
+python src/models/train_model.py
 ```
 
 ### Starting the API
 
-TODO: add this section.
+Locally:
+```shell script
+python src/api.py
+```
+
+Locally in Docker:
+```shell script
+docker build . -t cifar10
+docker run -p 5000:5000 cifar10
+```
