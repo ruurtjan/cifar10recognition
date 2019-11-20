@@ -1,14 +1,16 @@
-from keras.models import Model
-from keras.layers import Dense, Flatten, Conv2D, Input
-from sklearn.metrics import classification_report
+import logging
 import os
 import pickle
+
 import numpy as np
-import logging
+from keras.layers import Dense, Flatten, Conv2D, Input
+from keras.models import Model
+from sklearn.metrics import classification_report
 
 log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(level=logging.INFO, format=log_fmt)
 logger = logging.getLogger(__name__)
+
 
 def main():
     """
@@ -62,7 +64,7 @@ def conv_net(train_X, train_y, val_X, val_y, nr_classes):
     # Het model moet nog gecompiled worden en loss+learning functie gespecificeerd worden
     model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-    model.fit(x=train_X, y=train_y, batch_size=50, epochs=10, validation_data=(val_X, val_y), verbose=2)
+    model.fit(x=train_X, y=train_y, batch_size=50, epochs=1, validation_data=(val_X, val_y), verbose=2)
     return model
 
 

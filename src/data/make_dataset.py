@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 import logging
-from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
-import numpy as np
 import os
+import pickle
 import tarfile
 from urllib.request import urlretrieve
-import pickle
+
+import numpy as np
 
 log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(level=logging.INFO, format=log_fmt)
 logger = logging.getLogger(__name__)
+
 
 def main():
     """ Runs data processing scripts to turn raw data from (../raw) into

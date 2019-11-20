@@ -1,7 +1,8 @@
-import numpy as np
-import pickle
 import logging
 import os
+import pickle
+
+import numpy as np
 
 log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(level=logging.INFO, format=log_fmt)
@@ -16,8 +17,8 @@ def main():
     with open(os.path.join(os.getcwd(), "data", "interim", "data_dictionary.pickle"), "rb") as pickle_file:
         data_dict = pickle.load(pickle_file)
     data_dict['train_X'], data_dict['val_X'], data_dict['test_X'], mean, std = normalize_all_data(data_dict['train_X'],
-                                                                                       data_dict['val_X'],
-                                                                                       data_dict['test_X'])
+                                                                                                  data_dict['val_X'],
+                                                                                                  data_dict['test_X'])
     extra_info_dict = {}
     extra_info_dict['mean'], extra_info_dict['std'], extra_info_dict['label_to_names'] = mean, std, \
                                                                                          data_dict['label_to_names']
@@ -54,7 +55,8 @@ def normalize(data, mean, std):
     :param std: standard deviation of train feature data set
     :return: normalized data set
     """
-    return (data-mean)/std
+    return (data - mean) / std
+
 
 if __name__ == '__main__':
     main()
