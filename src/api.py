@@ -9,7 +9,7 @@ from features.build_features import normalize
 app = Flask(__name__)
 
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     request.get_data()
     data = str(request.data).split(',\\n')
