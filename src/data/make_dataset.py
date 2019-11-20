@@ -18,7 +18,7 @@ def main():
     """
     logger.info('making final data set from raw data')
     data_dictionary = load_data()
-    with open(os.path.join(os.getcwd(), "..", "..", "data", "interim", "data_dictionary.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "data", "interim", "data_dictionary.p"), "wb") as pickle_file:
         pickle.dump(data_dictionary, pickle_file)
 
 
@@ -59,7 +59,7 @@ def download_cifar10_data():
     :return dataset_dir: the filepath to the directory containing the cifar10 data
     """
     # training set, batches 1-4
-    dataset_dir = os.path.join(os.getcwd(), "..", "..", "data", "raw")
+    dataset_dir = os.path.join(os.getcwd(), "data", "raw")
     if not os.path.exists(dataset_dir):
         os.makedirs(dataset_dir)
 

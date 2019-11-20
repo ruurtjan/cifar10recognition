@@ -13,7 +13,7 @@ def main():
         Normalizes the given feature data sets and saves them in processed folder.
     """
     logger.info('Normalize data')
-    with open(os.path.join(os.getcwd(), "..", "..", "data", "interim", "data_dictionary.p"), "rb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "data", "interim", "data_dictionary.p"), "rb") as pickle_file:
         data_dict = pickle.load(pickle_file)
     data_dict['train_X'], data_dict['val_X'], data_dict['test_X'], mean, std = normalize_all_data(data_dict['train_X'],
                                                                                        data_dict['val_X'],
@@ -21,10 +21,10 @@ def main():
     extra_info_dict = {}
     extra_info_dict['mean'], extra_info_dict['std'], extra_info_dict['label_to_names'] = mean, std, \
                                                                                          data_dict['label_to_names']
-    with open(os.path.join(os.getcwd(), "..", "..", "data", "processed", "data_dictionary.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "data", "processed", "data_dictionary.p"), "wb") as pickle_file:
         pickle.dump(data_dict, pickle_file)
 
-    with open(os.path.join(os.getcwd(), "..", "..", "models", "extra_info_dictionary.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "models", "extra_info_dictionary.p"), "wb") as pickle_file:
         pickle.dump(extra_info_dict, pickle_file)
 
 
