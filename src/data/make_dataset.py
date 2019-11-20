@@ -18,7 +18,7 @@ def main():
     """
     logger.info('making final data set from raw data')
     data_dictionary = load_data()
-    with open(os.path.join(os.getcwd(), "data", "interim", "data_dictionary.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "data", "interim", "data_dictionary.pickle"), "wb") as pickle_file:
         pickle.dump(data_dictionary, pickle_file)
 
 

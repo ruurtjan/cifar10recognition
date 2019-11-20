@@ -14,13 +14,13 @@ def main():
     """
         Train model on train data set and save model and quality of model to pickle files.
     """
-    with open(os.path.join(os.getcwd(), "data", "processed", "data_dictionary.p"), "rb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "data", "processed", "data_dictionary.pickle"), "rb") as pickle_file:
         data_dict = pickle.load(pickle_file)
 
     model = conv_net(data_dict['train_X'], data_dict['train_y'], data_dict['val_X'], data_dict['val_y'],
                      len(data_dict['label_to_names']))
     model_quality_output(model, data_dict['test_X'], data_dict['test_y'], data_dict['label_to_names'])
-    with open(os.path.join(os.getcwd(), "models", "model.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "models", "model.pickle"), "wb") as pickle_file:
         pickle.dump(model, pickle_file)
 
 
@@ -83,12 +83,12 @@ def model_quality_output(model, test_X, test_y, label_to_names):
     # Print resultaten
     accuracy = np.sum(predictions == test_y) / float(len(predictions))
     logger.info("Accuracy = {}".format(accuracy))
-    with open(os.path.join(os.getcwd(), "models", "accuracy.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "models", "accuracy.pickle"), "wb") as pickle_file:
         pickle.dump(accuracy, pickle_file)
 
     report = classification_report(test_y, predictions, target_names=list(label_to_names.values()))
     logger.info(report)
-    with open(os.path.join(os.getcwd(), "models", "report.p"), "wb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "models", "report.pickle"), "wb") as pickle_file:
         pickle.dump(report, pickle_file)
 
 

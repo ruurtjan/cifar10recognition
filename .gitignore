@@ -75,8 +75,11 @@ target/
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
-# exclude data from source control by default
+# Exclude data from source control by default
 /data/
+
+# Exclude pickle files
+*.pickle
 
 # Mac OS-specific storage files
 .DS_Store

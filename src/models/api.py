@@ -12,10 +12,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    with open(os.path.join(os.getcwd(), "usr", "src", "model.p"), "rb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "usr", "src", "model.pickle"), "rb") as pickle_file:
         model = pickle.load(pickle_file)
 
-    with open(os.path.join(os.getcwd(), "usr", "src", "extra_info_dictionary.p"), "rb") as pickle_file:
+    with open(os.path.join(os.getcwd(), "usr", "src", "extra_info_dictionary.pickle"), "rb") as pickle_file:
         extra_info_dict = pickle.load(pickle_file)
 
     request.get_data()
