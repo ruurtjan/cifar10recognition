@@ -9,14 +9,8 @@ from features.build_features import normalize
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def hello_world():
-    with open(os.path.join(os.getcwd(), "models", "model.pickle"), "rb") as pickle_file:
-        model = pickle.load(pickle_file)
-
-    with open(os.path.join(os.getcwd(), "models", "extra_info_dictionary.pickle"), "rb") as pickle_file:
-        extra_info_dict = pickle.load(pickle_file)
-
+@app.route('/predict', methods=['GET', 'POST'])
+def predict():
     request.get_data()
     data = str(request.data).split(',\\n')
     data = np.array([float(line.replace(' ', '').replace('\\n', '').replace('[', '').replace(']', '')
@@ -27,4 +21,10 @@ def hello_world():
 
 
 if __name__ == '__main__':
+    with open(os.path.join(os.getcwd(), "models", "model.pickle"), "rb") as pickle_file:
+        model = pickle.load(pickle_file)
+
+    with open(os.path.join(os.getcwd(), "models", "extra_info_dictionary.pickle"), "rb") as pickle_file:
+        extra_info_dict = pickle.load(pickle_file)
+
     app.run(host='0.0.0.0', threaded=False)
