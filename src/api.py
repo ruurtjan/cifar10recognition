@@ -1,10 +1,27 @@
 import os
 import pickle
+from logging.config import dictConfig
 
 import numpy as np
 from flask import Flask, request
 
 from features.build_features import normalize
+
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '%(message)s',
+    }},
+    'handlers': {'console': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://sys.stdout',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['console']
+    }
+})
 
 app = Flask(__name__)
 
